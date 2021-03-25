@@ -4,12 +4,7 @@ import math
 
 class unfigure(figure):
     def area_tr(self):
-        a = float(input('Введите сторону а\n'))
-        b = float(input('Введите сторону b\n'))
-        c = float(input('Введите сторону с\n'))
-        p = (a+b+c)/2
-        area = math.sqrt(p * (p-a) * (p-b) * (p-c))
-        print(f"Площадь треугольника равна = {area:.2f}")
+        pass
 
 SELECTOR = {
     '1': unfigure.area_qa,
