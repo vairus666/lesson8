@@ -1,13 +1,24 @@
 from form import figure
+import math
+
+
+class unfigure(figure):
+    def area_tr(self):
+        a = float(input('Введите сторону а\n'))
+        b = float(input('Введите сторону b\n'))
+        c = float(input('Введите сторону с\n'))
+        p = (a+b+c)/2
+        area = math.sqrt(p * (p-a) * (p-b) * (p-c))
+        print(f"Площадь треугольника равна = {area:.2f}")
 
 SELECTOR = {
-    '1': figure.area_qa,
-    '2': figure.area_ri,
-    '3': figure.area_tr,
-    '4': figure.per_qa,
-    '5': figure.per_ri,
-    '6': figure.per_tr,
-    '7': figure.volume_ri
+    '1': unfigure.area_qa,
+    '2': unfigure.area_ri,
+    '3': unfigure.area_tr,
+    '4': unfigure.per_qa,
+    '5': unfigure.per_ri,
+    '6': unfigure.per_tr,
+    '7': unfigure.volume_ri
     }
 
 
@@ -29,9 +40,9 @@ def actions(figure):
         if string and SELECTOR.get(string):
                 SELECTOR.get(string)(figure)
         elif string:
-            print('Не понял, попробуйте еще раз')
+            print('Не знаю такой команды')
         else:
-            print('До встречи')
+            print('Пока')
             break
 
 my_figure = figure()
