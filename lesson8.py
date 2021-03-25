@@ -1,40 +1,38 @@
+from form import figure
 
-class Home:
-    def __init__(self, test:int):
-        self.__test = test 
-
-    def getFormatTest(self):
-        s = self.__test      
-        return f"{Home.__getForm(s)}"
-
-    def __getForm(x):
-        return str(x)
-
-    def getTest(self):
-        return self.__test
-
-    def __sub__(self, other): 
-        return Home(self.__test + other.getTest())
-        
-    def __mul__(self, other):
-        return Home(self.__test / other.getTest())
-
-    def __truediv__(self, other):
-        return Home(self.__test * other.getTest())
-
-    def __add__(self, other):
-        return Home(self.__test - other.getTest())
-
-test1 = Home(10)
-test2 = Home(5)
-test3 = test1 + test2
-print(test3.getFormatTest())
-test3 = test1 - test2
-print(test3.getFormatTest())
-test3 = test1 * test2
-print(test3.getFormatTest())
-test3 = test1 / test2
-print(test3.getFormatTest())
+SELECTOR = {
+    '1': figure.area_qa,
+    '2': figure.area_ri,
+    '3': figure.area_tr,
+    '4': figure.per_qa,
+    '5': figure.per_ri,
+    '6': figure.per_tr,
+    '7': figure.volume_ri
+    }
 
 
+def is_int(string):
+    return string.isdigit()
 
+def actions(figure):
+    while True:
+        string = input("""
+        Что делаем?
+        1: Площадь четырехугольника,
+        2: Площадь круга,
+        3: Площадь треугольника,
+        4: Периметр четырехугольника,
+        5: Периметр круга,
+        6: Периметр треугольника,
+        7: ОБъем шара
+        """)
+        if string and SELECTOR.get(string):
+                SELECTOR.get(string)(figure)
+        elif string:
+            print('Не понял, попробуйте еще раз')
+        else:
+            print('До встречи')
+            break
+
+my_figure = figure()
+actions(my_figure)
